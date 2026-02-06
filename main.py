@@ -21,6 +21,7 @@ def tambah_catatan():
 def lihat_catatan():
     if not catatan:
         print("Belum ada catatan belajar.")
+        input("\nTekan Enter untuk kembali ke menu...")
         return
 
     print("\nDaftar Catatan Belajar:")
@@ -30,9 +31,22 @@ def lihat_catatan():
         durasi = c.get('durasi', 0)
         print(f"{i}. Mapel: {mapel} | Topik: {topik} | Durasi: {durasi} menit")
     print(f"Total catatan: {len(catatan)}")
+    input("\nTekan Enter untuk kembali ke menu...")
 
 def total_waktu():
-    pass
+    if not catatan:
+        print("Belum ada catatan belajar.")
+        input("\nTekan Enter untuk kembali ke menu...")
+        return
+    
+    total = sum(c.get('durasi', 0) for c in catatan)
+    jam = total // 60
+    menit = total % 60
+    
+    print("\n=== Total Waktu Belajar ===")
+    print(f"Total durasi: {total} menit")
+    print(f"             = {jam} jam {menit} menit")
+    input("\nTekan Enter untuk kembali ke menu...")
 
 def menu():
     print("\n=== Study Log App ===")
