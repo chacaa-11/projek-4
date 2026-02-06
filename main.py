@@ -19,7 +19,17 @@ def tambah_catatan():
     print("Catatan tersimpan.")
 
 def lihat_catatan():
-    pass
+    if not catatan:
+        print("Belum ada catatan belajar.")
+        return
+
+    print("\nDaftar Catatan Belajar:")
+    for i, c in enumerate(catatan, 1):
+        mapel = c.get('mapel', '')
+        topik = c.get('topik', '')
+        durasi = c.get('durasi', 0)
+        print(f"{i}. Mapel: {mapel} | Topik: {topik} | Durasi: {durasi} menit")
+    print(f"Total catatan: {len(catatan)}")
 
 def total_waktu():
     pass
